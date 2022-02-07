@@ -1,0 +1,46 @@
+main {
+	background-image: url('../../public/img/header-pic.jpg');
+	flex-direction: column;
+	background-position: center;
+	background-size: cover;
+
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+}
+main::after {
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(9, 9, 9);
+	top: 0;
+	left: 0;
+	content: '';
+	z-index: -1;
+	isolation: isolate;
+	mix-blend-mode: lighten;
+}
+.title::after {
+	content: 'API';
+	font-size: 24px;
+	position: absolute;
+	right: -10px;
+	bottom: 10px;
+	transform: rotate(-5deg);
+	font-weight: bold;
+	color: black;
+	text-shadow: none;
+	font-family: Roboto;
+}
+img {
+	width: 15vw;
+	transition-property: transform;
+	transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+img:hover {
+	cursor: grab;
+	transform: scale(1.1);
+	position: relative;
+}

@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@mui/system';
 import { custom_theme } from './theme/custom_theme';
 import CssBaseline from '@mui/material/CssBaseline';
+
 ReactDOM.render(
 	<BrowserRouter>
 		<React.StrictMode>

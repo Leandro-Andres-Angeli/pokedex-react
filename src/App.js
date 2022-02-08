@@ -4,24 +4,29 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 import routes from './utils/routes';
-import Home from './pages/Home';
-//  const links = ['home', 'pokedex', 'advanced search', 'about'];
+import { useTheme } from '@emotion/react';
+import { ThemeProvider } from '@mui/styles';
+
 let links = routes.map((e, i) => {
-	let linkEl = e.path.replace('_', ' ');
+	let linkEl = [];
+	linkEl.push(e);
 	return linkEl;
 });
 
 function App() {
+	const theme = useTheme();
+	console.log(theme);
 	return (
-		<div className="app">
-			<Navbar links={links}></Navbar>
-			<Routes>
-				<Route path={`/`} key="home" element={<Home />} />
-				{routes.map(({ path, component }, i) => {
-					return <Route path={`/${path}`} key={i} element={component} />;
-				})}
-			</Routes>
-		</div>
+		<ThemeProvider theme={theme}>
+			<div className="app">
+				<Navbar links={links}></Navbar>
+				<Routes>
+					{routes.map(({ path, component, to }, i) => {
+						return <Route path={`/${path}`} key={i} element={component} />;
+					})}
+				</Routes>
+			</div>
+		</ThemeProvider>
 	);
 }
 

@@ -5,13 +5,15 @@ import Typography from '@mui/material/Typography';
 
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
-import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 import { Box, IconButton, Menu } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
+
 // install npm install @material-ui/icons to use material icons
 const Navbar = (props) => {
 	const { links } = props;
+
 	const [anchorElNav, setAnchorElNav] = useState(null);
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -31,7 +33,12 @@ const Navbar = (props) => {
 		<>
 			<AppBar color="primary">
 				<Toolbar>
-					<Typography variant="h1" sx={{ fontSize: '2rem' }}>
+					<Typography
+						component={Link}
+						to={links[0][0].path}
+						variant="h1"
+						sx={{ fontSize: '2rem', color: 'inhert', textDecoration: 'none' }}
+					>
 						Pokedex
 					</Typography>
 
@@ -41,24 +48,34 @@ const Navbar = (props) => {
 							display: { xs: 'none', md: 'flex' },
 							justifyContent: 'center',
 							alignItems: 'center',
+							gap: '1rem',
 						}}
 					>
-						{links.map((link, i) => (
-							<>
-								<Button
-									key={i}
-									// onClick={() => {}}
-									sx={{
-										my: 2,
-										color: 'white',
-										display: 'block',
-										alignSelf: 'end',
-									}}
-								>
-									{link}
-								</Button>
-							</>
-						))}
+						{links.map((e, i) =>
+							e.map((f, i) => {
+								return (
+									<>
+										<IconButton
+											component={Link}
+											to={f.path}
+											key={i + 2}
+											sx={{
+												color: 'white',
+												fill: 'white',
+												'&:hover': {
+													borderRadius: 1,
+												},
+												textTransform: 'uppercase ',
+												fontSize: '1rem',
+											}}
+										>
+											{f.icon}
+											{f.link}
+										</IconButton>
+									</>
+								);
+							})
+						)}
 					</Box>
 					<Box
 						sx={{
@@ -97,13 +114,24 @@ const Navbar = (props) => {
 								textTransform: 'uppercase',
 							}}
 						>
-							{links.map((link, i) => (
-								<MenuItem key={i} onClick={handleCloseNavMenu}>
-									<Typography key={link} textAlign="center">
-										{link}
-									</Typography>
-								</MenuItem>
-							))}
+							{links.map((e, i) =>
+								e.map((f, i) => {
+									return (
+										<MenuItem key={i} onClick={handleCloseNavMenu}>
+											<IconButton
+												component={Link}
+												to={f.path}
+												key={i + 2}
+												color="primary"
+												sx={{ fill: theme.palette.primary.main }}
+											>
+												{f.icon}
+												{f.link}
+											</IconButton>
+										</MenuItem>
+									);
+								})
+							)}
 						</Menu>
 					</Box>
 				</Toolbar>

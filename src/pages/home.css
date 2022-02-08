@@ -1,4 +1,4 @@
-main {
+.home_main {
 	background-image: url('../../public/img/header-pic.jpg');
 	flex-direction: column;
 	background-position: center;
@@ -9,7 +9,7 @@ main {
 	position: relative;
 	z-index: 1;
 }
-main::after {
+.home_main::after {
 	position: absolute;
 	display: inline-block;
 	width: 100%;

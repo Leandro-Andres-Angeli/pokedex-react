@@ -3,24 +3,29 @@ import { makeStyles, useTheme } from '@mui/styles';
 import Container from '@mui/material/Container';
 import './home.css';
 import { Typography } from '@mui/material';
-const style = makeStyles({
-	root: {
-		textDecoration: 'underline',
-	},
-});
+// const style = makeStyles({
+// 	root: {
+// 		textDecoration: 'underline',
+// 	},
+// });
 
 const Home = () => {
 	const theme = useTheme();
-	const classes = style();
+
 	console.log(theme.mixins.toolbar);
 	console.log(theme.grass);
 	return (
 		<Container
+			className="home_main"
 			maxWidth="lg"
 			component="main"
 			sx={{ height: '91vh', display: 'flex' }}
 		>
-			<img src="./img/pokeball.svg" style={{ marginBottom: '2rem' }}></img>
+			<img
+				alt=""
+				src="./img/pokeball.svg"
+				style={{ marginBottom: '2rem' }}
+			></img>
 			<Typography
 				variant="h2"
 				sx={{
@@ -29,7 +34,7 @@ const Home = () => {
 					textShadow: `-2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white`,
 				}}
 			>
-				welcome to{' '}
+				welcome to
 			</Typography>
 			<Typography
 				variant="h1"

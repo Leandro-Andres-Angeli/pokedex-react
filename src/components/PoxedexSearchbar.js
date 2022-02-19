@@ -15,6 +15,7 @@ const PoxedexSearchbar = () => {
 				width: '100%',
 				p: 5,
 				display: 'flex',
+				m: 0,
 			}}
 		>
 			<Box

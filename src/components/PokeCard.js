@@ -12,14 +12,23 @@ import customStyles from '../components/custom_styles/CustomStyles';
 import './pokecard.css';
 import checkColor from '../utils/checkColorFunc';
 const PokeCard = (props) => {
-	const { pokemon, pokedexArray } = props;
+	const { pokemon, pokedexArray, search, query } = props;
+	console.log(search);
+	console.log(query);
 	console.log(pokedexArray.url);
 	const theme = useTheme();
 
 	const [pokemonArray, setPokemonArray] = useState();
 	useEffect(() => {
-		fetchData(pokemon.url, setPokemonArray);
+		if (search === undefined) {
+			fetchData(pokemon.url, setPokemonArray);
+		}
 	}, [pokedexArray]);
+	useEffect(() => {
+		if (search !== undefined && search !== null) {
+			fetchData(pokemon.url, setPokemonArray);
+		}
+	}, [pokedexArray, search, query]);
 
 	return (
 		<Grid item xs={12} sm={6} md={4} lg={4}>

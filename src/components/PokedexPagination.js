@@ -3,7 +3,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import './pokedex_pagination.css';
 const PokedexPagination = (props) => {
-	const { counter, setCounter } = props;
+	const { setCounter } = props;
 
 	// const getLastPagination = () => {
 	// 	if (document.querySelector('ul').children[8].children[0].textContent) {
@@ -13,10 +13,10 @@ const PokedexPagination = (props) => {
 	// 	}
 	// };
 	let lastVal =
-		document.querySelector('ul')?.children[8].children[0].textContent;
+		document.querySelector('ul')?.children[8]?.children[0].textContent;
 
 	const handleChange = (e) => {
-		e.target.dataset.testid === 'LastPageIcon'
+		e.target.dataset.testid === 'LastPageIcon' && lastVal !== undefined
 			? setCounter(parseInt(lastVal) * 12 - 12)
 			: setCounter(12 * (parseInt(e.target.textContent) - 1));
 		window.scroll({ top: 450, behavior: 'smooth' });

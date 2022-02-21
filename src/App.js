@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import routes from './utils/routes';
 import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@mui/styles';
-
+import PokedexSearchbar from './components/PoxedexSearchbar';
 let links = routes.map((e, i) => {
 	let linkEl = [];
 	linkEl.push(e);
@@ -15,7 +15,7 @@ let links = routes.map((e, i) => {
 
 function App() {
 	const theme = useTheme();
-	console.log(theme);
+
 	return (
 		<ThemeProvider theme={theme}>
 			<div className="app">

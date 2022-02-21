@@ -41,8 +41,8 @@ const Home = () => {
 				className="title"
 				style={{
 					fontFamily: 'Pokemon',
-					color: theme.electric,
-					textShadow: `-2px -2px 0 ${theme.water}, 2px -2px 0 ${theme.water}, -2px 2px 0 ${theme.water}, 2px 2px 0 ${theme.water}`,
+					color: theme.palette.electric,
+					textShadow: `-2px -2px 0 ${theme.palette.water}, 2px -2px 0 ${theme.palette.water}, -2px 2px 0 ${theme.palette.water}, 2px 2px 0 ${theme.palette.water}`,
 					position: 'relative',
 					marginBottom: '10rem',
 				}}

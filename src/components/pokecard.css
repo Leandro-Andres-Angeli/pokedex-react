@@ -1,3 +1,29 @@
 .poke_card_header_img {
 	object-fit: contain !important;
 }
+.grass {
+	background-color: lightgreen;
+}
+.electric {
+	background-color: #ffe341;
+}
+
+/* .flying{ background-color:blue}  */
+/* .fire{background-color:red}  */
+/* .poison {
+	background-color: purple;
+} */
+/* .bug{} green[500],
+
+		.dragon{} deepOrange[500],
+		.fairy{} pink[100],
+		.ghost{} deepPurple[500],
+		.ground{} orange[700],
+		.normal{} grey[500],
+		.phsychic{} pink[500],
+		.steel{} blueGrey[500],
+		.dark{} blueGrey[700],
+		.fighting{} deepOrange[500],
+		.ice{} lightBlue[300],
+		.rock{} brown[500],
+		.water{} lightBlue[500],  */

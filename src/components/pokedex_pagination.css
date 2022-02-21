@@ -1,0 +1,5 @@
+.MuiPagination-root {
+	background-color: white;
+	justify-content: center;
+	display: flex;
+}

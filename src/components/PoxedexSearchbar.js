@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
-
+import SettingsBackupRestoreRoundedIcon from '@mui/icons-material/SettingsBackupRestoreRounded';
 import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
 import { IconButton, TextField, Typography, FormControl } from '@mui/material';
-const PoxedexSearchbar = () => {
+import Button from '@mui/material/Button';
+const PoxedexSearchbar = (props) => {
+	let { setSearch, setQuery, search } = props;
 	return (
 		<Container
 			component="section"
@@ -31,6 +33,9 @@ const PoxedexSearchbar = () => {
 						label="Search by name or id"
 						variant="outlined"
 						sx={{ flexGrow: 1 }}
+						onChange={(e) => {
+							setQuery(e.target.value);
+						}}
 					/>
 					<IconButton
 						type="submit"
@@ -40,9 +45,23 @@ const PoxedexSearchbar = () => {
 							marginLeft: ' 0.5rem',
 						}}
 						aria-label="search"
+						onClick={() => {
+							setSearch(!search);
+						}}
 					>
 						<SearchIcon />
 					</IconButton>
+					<Button
+						variant="contained"
+						startIcon={<SettingsBackupRestoreRoundedIcon />}
+						color="secondary"
+						size="small"
+						onClick={() => {
+							setSearch(null);
+						}}
+					>
+						back to pokedex
+					</Button>
 				</FormControl>
 
 				<Typography sx={{ my: 4 }}>

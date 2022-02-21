@@ -12,9 +12,8 @@ import customStyles from '../components/custom_styles/CustomStyles';
 import './pokecard.css';
 import checkColor from '../utils/checkColorFunc';
 const PokeCard = (props) => {
-	const { pokemon, pokedexArray, search } = props;
-	console.log(search);
-
+	const { pokemon, pokedexArray } = props;
+	console.log(pokedexArray.url);
 	const theme = useTheme();
 
 	const [pokemonArray, setPokemonArray] = useState();

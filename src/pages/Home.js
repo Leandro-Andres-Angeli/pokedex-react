@@ -12,8 +12,6 @@ import { Typography } from '@mui/material';
 const Home = () => {
 	const theme = useTheme();
 
-	console.log(theme.mixins.toolbar);
-	console.log(theme.grass);
 	return (
 		<Container
 			className="home_main"

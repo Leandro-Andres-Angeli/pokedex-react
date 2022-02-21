@@ -21,34 +21,42 @@ const URI = process.env.REACT_APP_API_URL;
 console.log(URI);
 const Pokedex = () => {
 	let [pokemonArray, setPokemonNameArray] = useState();
-	let [search, setSearch] = useState(false);
+	let [search, setSearch] = useState(null);
 	let [query, setQuery] = useState('');
-	const [queryResults, setQueryResults] = useState([]);
+	let [queryResults, setQueryResults] = useState([]);
+	let [searchResults, setSearchResults] = useState([]);
 	const [counter, setCounter] = useState(0);
-
+	console.log(counter);
 	useEffect(() => {
 		fetchData(`${URI}?limit=12&offset=${counter}`, setPokemonNameArray);
 	}, [counter]);
-	useEffect(() => {
-		axios
-			.get(`${URI}?limit=898&offset=0`)
-			.then((res) => {
-				setQueryResults(res?.data.results);
-			})
-			.catch((err) => console.log(err));
-		console.log(queryResults);
-		const options = {
-			includeScore: true,
-			useExtendedSearch: true,
-			threshold: 0.3,
 
-			keys: ['name'],
-		};
+	// useEffect(() => {
+	// 	axios
+	// 		.get(`${URI}?limit=898&offset=0`)
+	// 		.then((res) => {
+	// 			setQueryResults(res?.data.results);
+	// 		})
+	// 		.catch((err) => console.log(err));
 
-		const fuse = new Fuse(queryResults, options);
-		const result = fuse.search('pikachu');
-		console.log(result);
-	}, [search]);
+	// 	if (queryResults.length > 0) {
+	// 		const options = {
+	// 			includeScore: true,
+	// 			useExtendedSearch: true,
+	// 			threshold: 0.3,
+	// 			keys: ['name'],
+	// 		};
+
+	// 		const fuse = new Fuse(queryResults, options);
+	// 		const result = fuse.search(query);
+	// 		let resArray = [];
+	// 		resArray = result.map((e) => e.item);
+	// 		// setPokemonNameArray(resArray);
+	// 		// console.log(resArray);
+	// 		setSearchResults(resArray);
+	// 	}
+	// }, [search, query]);
+	// console.log(searchResults);
 	return (
 		<>
 			<Container sx={{ backgroundColor: 'white', py: 3 }}>
@@ -59,17 +67,36 @@ const Pokedex = () => {
 					search={search}
 				></PokedexSearchbar>
 				<Grid container spacing={3} pt={10}>
-					{pokemonArray
-						? pokemonArray.map((p) => {
-								return (
-									<PokeCard
-										pokemon={p}
-										search={search}
-										pokedexArray={pokemonArray}
-									></PokeCard>
-								);
-						  })
-						: null}
+					{search === null ? (
+						<>
+							{pokemonArray
+								? pokemonArray.map((p) => {
+										return (
+											<PokeCard
+												pokemon={p}
+												pokedexArray={pokemonArray}
+											></PokeCard>
+										);
+								  })
+								: null}
+						</>
+					) : (
+						<>
+							{/* {searchResults
+								? searchResults.map((p) => {
+										return (
+											<PokeCard
+												pokemon={p}
+												query={query}
+												search={search}
+												pokedexArray={pokemonArray}
+											></PokeCard>
+										);
+								  })
+								: null} */}
+							{null}
+						</>
+					)}
 				</Grid>
 				<PokedexPagination
 					counter={counter}

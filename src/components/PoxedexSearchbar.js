@@ -8,6 +8,9 @@ import { IconButton, TextField, Typography, FormControl } from '@mui/material';
 import Button from '@mui/material/Button';
 const PoxedexSearchbar = (props) => {
 	let { setSearch, setQuery, search } = props;
+
+	let [input, setinput] = useState(' ');
+
 	return (
 		<Container
 			component="section"
@@ -32,9 +35,10 @@ const PoxedexSearchbar = (props) => {
 						id="outlined-basic"
 						label="Search by name or id"
 						variant="outlined"
+						value={input}
 						sx={{ flexGrow: 1 }}
 						onChange={(e) => {
-							setQuery(e.target.value);
+							setinput(e.target.value);
 						}}
 					/>
 					<IconButton
@@ -45,8 +49,10 @@ const PoxedexSearchbar = (props) => {
 							marginLeft: ' 0.5rem',
 						}}
 						aria-label="search"
-						onClick={() => {
+						onClick={(e) => {
+							e.preventDefault();
 							setSearch(!search);
+							setQuery(input);
 						}}
 					>
 						<SearchIcon />
@@ -58,6 +64,7 @@ const PoxedexSearchbar = (props) => {
 						size="small"
 						onClick={() => {
 							setSearch(null);
+							setinput('');
 						}}
 					>
 						back to pokedex

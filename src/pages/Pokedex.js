@@ -15,6 +15,7 @@ import cardColors from '../components/custom_styles/CustomStyles';
 import PokedexPagination from '../components/PokedexPagination';
 import axios from 'axios';
 import Fuse from 'fuse.js';
+import { Typography } from '@mui/material';
 
 const URI = process.env.REACT_APP_API_URL;
 
@@ -43,7 +44,7 @@ const Pokedex = () => {
 			const options = {
 				includeScore: true,
 				useExtendedSearch: true,
-				threshold: 0.3,
+				threshold: 0.2,
 				keys: ['name'],
 			};
 
@@ -82,8 +83,14 @@ const Pokedex = () => {
 						</>
 					) : (
 						<>
-							{searchResults
-								? searchResults.map((p) => {
+							{searchResults ? (
+								searchResults.length === 0 ? (
+									<Container sx={{ textAlign: 'center', py: 10 }}>
+										{' '}
+										<Typography variant="h4">Pokemon not found </Typography>
+									</Container>
+								) : (
+									searchResults.map((p) => {
 										return (
 											<PokeCard
 												pokemon={p}
@@ -92,16 +99,19 @@ const Pokedex = () => {
 												pokedexArray={searchResults}
 											></PokeCard>
 										);
-								  })
-								: null}
+									})
+								)
+							) : null}
 							{null}
 						</>
 					)}
 				</Grid>
-				<PokedexPagination
-					counter={counter}
-					setCounter={setCounter}
-				></PokedexPagination>
+				{search === null ? (
+					<PokedexPagination
+						counter={counter}
+						setCounter={setCounter}
+					></PokedexPagination>
+				) : null}
 			</Container>
 		</>
 	);

@@ -5,13 +5,6 @@ import './pokedex_pagination.css';
 const PokedexPagination = (props) => {
 	const { setCounter } = props;
 
-	// const getLastPagination = () => {
-	// 	if (document.querySelector('ul').children[8].children[0].textContent) {
-	// 		return document.querySelector('ul').children[8].children[0].textContent;
-	// 	} else {
-	// 		return null;
-	// 	}
-	// };
 	let lastVal =
 		document.querySelector('ul')?.children[8]?.children[0].textContent;
 

@@ -6,11 +6,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
 import { IconButton, TextField, Typography, FormControl } from '@mui/material';
 import Button from '@mui/material/Button';
+import { validateText, validateNum } from '../utils/validation';
 const PoxedexSearchbar = (props) => {
 	let { setSearch, setQuery, search } = props;
 
 	let [input, setinput] = useState(' ');
-
+	console.log(validateText(input));
+	console.log(validateNum(input));
+	const validate = validateText(input) || validateNum(input);
+	console.log(validate);
 	return (
 		<Container
 			component="section"
@@ -35,8 +39,14 @@ const PoxedexSearchbar = (props) => {
 						id="outlined-basic"
 						label="Search by name or id"
 						variant="outlined"
+						helperText="text larger then 4 character Id number between 1 and 898"
 						value={input}
-						sx={{ flexGrow: 1 }}
+						sx={{
+							flexGrow: 1,
+							'& .MuiFormHelperText-root': {
+								display: validate ? 'none' : 'block',
+							},
+						}}
 						onChange={(e) => {
 							setinput(e.target.value);
 						}}
@@ -53,6 +63,7 @@ const PoxedexSearchbar = (props) => {
 							e.preventDefault();
 							setSearch(!search);
 							setQuery(input);
+							window.scroll({ bottom: 100, behavior: 'smooth' });
 						}}
 					>
 						<SearchIcon />
@@ -65,6 +76,7 @@ const PoxedexSearchbar = (props) => {
 						onClick={() => {
 							setSearch(null);
 							setinput('');
+							window.scroll({ bottom: 100, behavior: 'smooth' });
 						}}
 					>
 						back to pokedex

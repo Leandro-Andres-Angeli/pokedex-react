@@ -13,9 +13,7 @@ import './pokecard.css';
 import checkColor from '../utils/checkColorFunc';
 const PokeCard = (props) => {
 	const { pokemon, pokedexArray, search, query } = props;
-	console.log(search);
-	console.log(query);
-	console.log(pokedexArray.url);
+
 	const theme = useTheme();
 
 	const [pokemonArray, setPokemonArray] = useState();
@@ -88,7 +86,7 @@ const PokeCard = (props) => {
 						}
 						height="240"
 						alt=""
-						className={'poke_card_header_img'}
+						className="poke_card_header_img"
 					/>
 					<CardContent>
 						<Stack direction="row" spacing={1}>

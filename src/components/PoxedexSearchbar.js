@@ -10,11 +10,10 @@ import { validateText, validateNum } from '../utils/validation';
 const PoxedexSearchbar = (props) => {
 	let { setSearch, setQuery, search } = props;
 
-	let [input, setinput] = useState(' ');
-	console.log(validateText(input));
-	console.log(validateNum(input));
+	let [input, setinput] = useState('');
+
 	const validate = validateText(input) || validateNum(input);
-	console.log(validate);
+
 	return (
 		<Container
 			component="section"
@@ -39,10 +38,11 @@ const PoxedexSearchbar = (props) => {
 						id="outlined-basic"
 						label="Search by name or id"
 						variant="outlined"
-						helperText="text larger then 4 character Id number between 1 and 898"
+						helperText="text must be larger then 3 character Id number between 1 and 898"
 						value={input}
 						sx={{
 							flexGrow: 1,
+
 							'& .MuiFormHelperText-root': {
 								display: validate ? 'none' : 'block',
 							},
@@ -58,12 +58,16 @@ const PoxedexSearchbar = (props) => {
 							fontSize: ' 2rem',
 							marginLeft: ' 0.5rem',
 						}}
+						disabled={validate === false}
 						aria-label="search"
 						onClick={(e) => {
-							e.preventDefault();
 							setSearch(!search);
 							setQuery(input);
-							window.scroll({ bottom: 100, behavior: 'smooth' });
+							setinput('');
+							setTimeout(
+								6000,
+								window.scroll({ top: window.innerHeight, behavior: 'smooth' })
+							);
 						}}
 					>
 						<SearchIcon />
@@ -76,7 +80,7 @@ const PoxedexSearchbar = (props) => {
 						onClick={() => {
 							setSearch(null);
 							setinput('');
-							window.scroll({ bottom: 100, behavior: 'smooth' });
+							setTimeout(4000, window.scroll({ top: 600, behavior: 'smooth' }));
 						}}
 					>
 						back to pokedex

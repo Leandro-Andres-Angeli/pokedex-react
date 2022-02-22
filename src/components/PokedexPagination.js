@@ -12,7 +12,7 @@ const PokedexPagination = (props) => {
 		e.target.dataset.testid === 'LastPageIcon' && lastVal !== undefined
 			? setCounter(parseInt(lastVal) * 12 - 12)
 			: setCounter(12 * (parseInt(e.target.textContent) - 1));
-		window.scroll({ top: 450, behavior: 'smooth' });
+		window.scroll({ top: 600, behavior: 'smooth' });
 	};
 
 	return (

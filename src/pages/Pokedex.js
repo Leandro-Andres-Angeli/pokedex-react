@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 import Container from '@mui/material/Container';
 
 import './pokedex.css';
@@ -10,16 +10,14 @@ import Grid from '@mui/material/Grid';
 import { useState } from 'react';
 import fetchData from '../API/API';
 import PokeCard from '../components/PokeCard';
-import { ThemeProvider } from '@mui/material/styles';
-import cardColors from '../components/custom_styles/CustomStyles';
-import PokedexPagination from '../components/PokedexPagination';
-import axios from 'axios';
-import Fuse from 'fuse.js';
-import { Typography } from '@mui/material';
 
+import PokedexPagination from '../components/PokedexPagination';
+
+import { Typography } from '@mui/material';
+import { fuseSearch } from '../API/fusePokedex';
+import { validateNum, validateText } from '../utils/validation';
 const URI = process.env.REACT_APP_API_URL;
 
-console.log(URI);
 const Pokedex = () => {
 	let [pokemonArray, setPokemonNameArray] = useState();
 	let [search, setSearch] = useState(null);
@@ -27,35 +25,34 @@ const Pokedex = () => {
 	let [queryResults, setQueryResults] = useState([]);
 	let [searchResults, setSearchResults] = useState([]);
 	const [counter, setCounter] = useState(0);
-	console.log(counter);
+
 	useEffect(() => {
 		fetchData(`${URI}?limit=12&offset=${counter}`, setPokemonNameArray);
 	}, [counter]);
 
 	useEffect(() => {
-		axios
-			.get(`${URI}?limit=898&offset=0`)
-			.then((res) => {
-				setQueryResults(res?.data.results);
-			})
-			.catch((err) => console.log(err));
+		fetchData(`${URI}?limit=898&offset=0`, setQueryResults);
 
-		if (queryResults.length > 0) {
+		// if (queryResults.length > 0) {
+		if (validateText(query)) {
 			const options = {
 				includeScore: true,
 				useExtendedSearch: true,
 				threshold: 0.2,
 				keys: ['name'],
 			};
-
-			const fuse = new Fuse(queryResults, options);
-			const result = fuse.search(query);
-			let resArray = [];
-			resArray = result.map((e) => e.item);
-			// setPokemonNameArray(resArray);
-			// console.log(resArray);
-			setSearchResults(resArray);
+			fuseSearch(queryResults, options, setSearchResults, query);
+		} else if (validateNum(query)) {
+			console.log(query);
+			const filteredNumber = queryResults.filter(
+				(e) => e.url === `${process.env.REACT_APP_API_URL}/${query}/`
+			);
+			console.log(filteredNumber);
+			if (filteredNumber) {
+				setTimeout(2000, setSearchResults(filteredNumber));
+			}
 		}
+		// }
 	}, [search, query]);
 	console.log(searchResults);
 	return (
@@ -71,9 +68,10 @@ const Pokedex = () => {
 					{search === null ? (
 						<>
 							{pokemonArray
-								? pokemonArray.map((p) => {
+								? pokemonArray.map((p, i) => {
 										return (
 											<PokeCard
+												key={i}
 												pokemon={p}
 												pokedexArray={pokemonArray}
 											></PokeCard>
@@ -90,9 +88,10 @@ const Pokedex = () => {
 										<Typography variant="h4">Pokemon not found </Typography>
 									</Container>
 								) : (
-									searchResults.map((p) => {
+									searchResults.map((p, i) => {
 										return (
 											<PokeCard
+												key={i}
 												pokemon={p}
 												query={query}
 												search={search}

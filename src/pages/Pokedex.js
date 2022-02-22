@@ -24,6 +24,7 @@ const Pokedex = () => {
 	let [query, setQuery] = useState('');
 	let [queryResults, setQueryResults] = useState([]);
 	let [searchResults, setSearchResults] = useState([]);
+	const [isLoaded, setisLoaded] = useState(false);
 	const [counter, setCounter] = useState(0);
 
 	useEffect(() => {
@@ -47,12 +48,11 @@ const Pokedex = () => {
 			const filteredNumber = queryResults.filter(
 				(e) => e.url === `${process.env.REACT_APP_API_URL}/${query}/`
 			);
-			console.log(filteredNumber);
+
 			if (filteredNumber) {
-				setTimeout(2000, setSearchResults(filteredNumber));
+				setSearchResults(filteredNumber);
 			}
 		}
-		// }
 	}, [search, query]);
 	console.log(searchResults);
 	return (

@@ -1,7 +1,8 @@
 import { Container, Typography } from '@mui/material';
 import React from 'react';
 
-const PokedexHeader = () => {
+const PokedexHeader = (props) => {
+	const { title } = props;
 	return (
 		<Container
 			className="pokedex_main"
@@ -14,7 +15,7 @@ const PokedexHeader = () => {
 					variant="h1"
 				>
 					{' '}
-					Pokedex{' '}
+					{title}{' '}
 				</Typography>
 			</Container>
 		</Container>

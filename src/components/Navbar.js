@@ -31,7 +31,7 @@ const Navbar = (props) => {
 
 	return (
 		<>
-			<AppBar color="primary">
+			<AppBar color="primary" sx={{ px: { lg: 10 } }}>
 				<Toolbar>
 					<Typography
 						component={Link}

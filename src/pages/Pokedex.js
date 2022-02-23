@@ -58,7 +58,10 @@ const Pokedex = () => {
 	return (
 		<>
 			<Container sx={{ backgroundColor: 'white', py: 3 }}>
-				<PokedexHeader title="Pokedex"></PokedexHeader>
+				<PokedexHeader
+					title="Pokedex"
+					sx={{ fontSize: { md: '2rem' } }}
+				></PokedexHeader>
 				<PokedexSearchbar
 					setSearch={setSearch}
 					setQuery={setQuery}

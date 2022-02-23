@@ -85,13 +85,19 @@ const PoxedexSearchbar = (props) => {
 					</Button>
 				</FormControl>
 
-				<Typography sx={{ my: 4 }}>
+				<Typography paragraph sx={{ py: 2 }}>
 					Use the Advanced Search to explore Pokemon by type ability weakness
 					and more!
 				</Typography>
 
-				<Paper sx={{ p: 3, backgroundColor: '#008a5f', color: 'white' }}>
-					<Typography variant="h3">
+				<Paper
+					sx={{
+						p: 3,
+						backgroundColor: '#008a5f',
+						color: 'white',
+					}}
+				>
+					<Typography paragraph>
 						Search for a Pokémon by name or using its National Pokédex number.
 					</Typography>
 				</Paper>

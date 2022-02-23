@@ -11,7 +11,13 @@ const PokedexHeader = (props) => {
 		>
 			<Container component="section" sx={{ px: 0 }} maxWidth="lg">
 				<Typography
-					sx={{ textTransform: 'uppercase', py: 10, px: 0, ml: 3 }}
+					sx={{
+						textTransform: 'uppercase',
+						py: 10,
+						px: 0,
+						ml: 3,
+						fontSize: { xs: 25, md: 50 },
+					}}
 					variant="h1"
 				>
 					{' '}

@@ -31,7 +31,7 @@ const AdvancedSearchForm = () => {
 		control,
 		formState: { errors, isDirty, isValid },
 	} = useForm();
-	console.log('valid', isValid);
+
 	const [value, setValue] = useState([0, 15]);
 	const [types, setTypes] = useState();
 
@@ -39,10 +39,6 @@ const AdvancedSearchForm = () => {
 		FetchTypes(`${process.env.REACT_APP_API_URL_TYPES}/type`, setTypes);
 	}, []);
 
-	const handleChange = (e) => {
-		setValue(e.target.value);
-	};
-	// onSubmit={handleSubmit(onSubmit)
 	const onSubmit = (data) => console.log(data);
 	console.log(errors);
 	return (
@@ -67,7 +63,6 @@ const AdvancedSearchForm = () => {
 								error={errors?.name?.message ? true : false}
 								helperText={errors?.name?.message ? errors.name.message : null}
 							/>
-							{/* <FormHelperText>{errors?.name?.message}</FormHelperText> */}
 
 							<FormLabel
 								sx={{
@@ -92,12 +87,12 @@ const AdvancedSearchForm = () => {
 										/>
 									)}
 								/>
-								<Typography variant="h5" color="primary">
+								{/* <Typography variant="h5" color="primary">
 									{' '}
 									Range selected :<br />
 								</Typography>
 								<TextField value={value[0]} sx={{ width: '70px' }} />
-								<TextField value={value[1]} sx={{ width: '70px', ml: 5 }} />
+								<TextField value={value[1]} sx={{ width: '70px', ml: 5 }} /> */}
 							</FormLabel>
 						</Box>
 						<Box sx={{ flex: '1 2 30%' }} py={3}>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import FormHelperText from '@mui/material/FormHelperText';
+
 import FetchTypes from '../API/FetchTypes';
 import {
 	Typography,
@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Card from '@mui/material/Card';
-
+import FormHelperText from '@mui/material/FormHelperText';
 import CardContent from '@mui/material/CardContent';
 import Slider from '@mui/material/Slider';
 import TextField from '@mui/material/TextField';
@@ -25,15 +25,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useForm, Controller } from 'react-hook-form';
 import MuiInput from '@mui/material/Input';
 const AdvancedSearchForm = () => {
-	const [value, setValue] = useState([0, 15]);
-	const [types, setTypes] = useState();
 	const {
 		register,
 		handleSubmit,
-		watch,
 		control,
-		formState: { errors },
+		formState: { errors, isDirty, isValid },
 	} = useForm();
+	console.log('valid', isValid);
+	const [value, setValue] = useState([0, 15]);
+	const [types, setTypes] = useState();
 
 	useEffect(() => {
 		FetchTypes(`${process.env.REACT_APP_API_URL_TYPES}/type`, setTypes);
@@ -44,6 +44,7 @@ const AdvancedSearchForm = () => {
 	};
 	// onSubmit={handleSubmit(onSubmit)
 	const onSubmit = (data) => console.log(data);
+	console.log(errors);
 	return (
 		<Container>
 			<Card>
@@ -59,8 +60,14 @@ const AdvancedSearchForm = () => {
 								label="search by name"
 								type="text"
 								sx={{ width: '100%' }}
-								{...register('name')}
+								{...register('name', {
+									required: 'required field',
+									minLength: { value: 4, message: 'at least 4 characters' },
+								})}
+								error={errors?.name?.message ? true : false}
+								helperText={errors?.name?.message ? errors.name.message : null}
 							/>
+							{/* <FormHelperText>{errors?.name?.message}</FormHelperText> */}
 
 							<FormLabel
 								sx={{
@@ -99,36 +106,43 @@ const AdvancedSearchForm = () => {
 								<Divider component="span">
 									<Chip label="Types" />
 								</Divider>
-								<Box
-									sx={{
-										display: 'grid',
-										mt: { md: 5 },
-										gridTemplateColumns: {
-											sm: 'repeat(3,1fr)',
-											md: 'repeat(4,1fr)',
-											xs: 'repeat(2,1fr)',
-										},
-									}}
+								<FormControl
+									component="CheckboxGroup"
 									px={4}
+									error={errors?.types?.message ? true : false}
 								>
-									{types
-										? types.results.map((t) => {
-												return (
-													<FormControlLabel
-														{...register('type')}
-														sx={{ textTransform: 'uppercase' }}
-														value={t.name}
-														control={<Checkbox />}
-														label={t.name}
-														labelPlacement="end"
-														onChange={(e) => {
-															console.log(e.target.value);
-														}}
-													/>
-												);
-										  })
-										: null}
-								</Box>
+									<Box
+										sx={{
+											display: 'grid',
+											mt: { md: 5 },
+											gridTemplateColumns: {
+												sm: 'repeat(3,1fr)',
+												md: 'repeat(4,1fr)',
+												xs: 'repeat(2,1fr)',
+											},
+										}}
+									>
+										{types
+											? types.results.map((t) => {
+													return (
+														<FormControlLabel
+															{...register('types', {
+																required: 'required field',
+															})}
+															sx={{ textTransform: 'uppercase' }}
+															value={t.name}
+															control={<Checkbox />}
+															label={t.name}
+															labelPlacement="end"
+														/>
+													);
+											  })
+											: null}
+									</Box>
+									<FormHelperText component="span">
+										{errors?.types?.message}
+									</FormHelperText>
+								</FormControl>
 							</FormGroup>
 						</Box>
 						<Button
@@ -140,8 +154,9 @@ const AdvancedSearchForm = () => {
 								py: '1rem',
 								alignSelf: 'end',
 							}}
-							startIcon={<SearchIcon />}
 							type="submit"
+							value="search"
+							color="primary"
 						>
 							Search
 						</Button>

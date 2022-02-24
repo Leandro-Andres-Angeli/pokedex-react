@@ -1,2 +1,6 @@
-const scrollFunc = () => window.scroll({ top: 714, behavior: 'smooth' });
+const scrollFunc = (timer, position) => {
+	setTimeout(() => {
+		window.scroll({ top: position, behavior: 'smooth' });
+	}, timer);
+};
 export { scrollFunc };

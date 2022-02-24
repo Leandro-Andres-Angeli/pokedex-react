@@ -2,6 +2,7 @@ import React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import './pokedex_pagination.css';
+import { scrollFunc } from '../utils/scrollFunc';
 const PokedexPagination = (props) => {
 	const { setCounter } = props;
 
@@ -12,7 +13,8 @@ const PokedexPagination = (props) => {
 		e.target.dataset.testid === 'LastPageIcon' && lastVal !== undefined
 			? setCounter(parseInt(lastVal) * 12 - 12)
 			: setCounter(12 * (parseInt(e.target.textContent) - 1));
-		window.scroll({ top: 600, behavior: 'smooth' });
+
+		scrollFunc(500, 600);
 	};
 
 	return (

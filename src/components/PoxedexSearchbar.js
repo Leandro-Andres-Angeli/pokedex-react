@@ -65,7 +65,8 @@ const PoxedexSearchbar = (props) => {
 							setSearch(!search);
 							setQuery(input);
 							setinput('');
-							setTimeout(scrollFunc, 1000);
+							// setTimeout(window.scroll({ top: 714, behavior: 'smooth' }), 4000);
+							scrollFunc(1500, 814);
 						}}
 					>
 						<SearchIcon />
@@ -78,7 +79,8 @@ const PoxedexSearchbar = (props) => {
 						onClick={() => {
 							setSearch(null);
 							setinput('');
-							setTimeout(scrollFunc, 1000);
+
+							scrollFunc(1000, 714);
 						}}
 					>
 						back to pokedex

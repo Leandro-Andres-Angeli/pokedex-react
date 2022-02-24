@@ -81,15 +81,14 @@ const AdvancedSearchForm = () => {
 								<Controller
 									name="id_Range"
 									control={control}
-									defaultValue={value}
 									onChange={([, value]) => value}
-									render={({}) => (
+									render={({ field: { onChange } }) => (
 										<Slider
 											max={898}
 											min={1}
-											onChange={handleChange}
+											onChange={onChange}
 											valueLabelDisplay="auto"
-											value={value}
+											defaultValue={[0, 15]}
 										/>
 									)}
 								/>

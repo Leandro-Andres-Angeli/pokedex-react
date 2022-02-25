@@ -8,6 +8,7 @@ import { IconButton, TextField, Typography, FormControl } from '@mui/material';
 import Button from '@mui/material/Button';
 import { validateText, validateNum } from '../utils/validation';
 import { scrollFunc } from '../utils/scrollFunc';
+
 const PoxedexSearchbar = (props) => {
 	let { setSearch, setQuery, search } = props;
 
@@ -65,8 +66,8 @@ const PoxedexSearchbar = (props) => {
 							setSearch(!search);
 							setQuery(input);
 							setinput('');
-							// setTimeout(window.scroll({ top: 714, behavior: 'smooth' }), 4000);
-							scrollFunc(1500, 814);
+
+							scrollFunc(300, 814);
 						}}
 					>
 						<SearchIcon />
@@ -80,7 +81,7 @@ const PoxedexSearchbar = (props) => {
 							setSearch(null);
 							setinput('');
 
-							scrollFunc(1000, 714);
+							scrollFunc(300, 714);
 						}}
 					>
 						back to pokedex

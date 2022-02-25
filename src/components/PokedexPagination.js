@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 import './pokedex_pagination.css';
 import { scrollFunc } from '../utils/scrollFunc';
 const PokedexPagination = (props) => {
-	const { setCounter } = props;
+	const { setCounter, setFade } = props;
 
 	let lastVal =
 		document.querySelector('ul')?.children[8]?.children[0].textContent;
@@ -13,8 +13,8 @@ const PokedexPagination = (props) => {
 		e.target.dataset.testid === 'LastPageIcon' && lastVal !== undefined
 			? setCounter(parseInt(lastVal) * 12 - 12)
 			: setCounter(12 * (parseInt(e.target.textContent) - 1));
-
-		scrollFunc(500, 600);
+		setFade(true);
+		scrollFunc(300, 600);
 	};
 
 	return (

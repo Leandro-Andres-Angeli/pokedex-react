@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import routes from './utils/routes';
 import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@mui/styles';
+import PokemonProfile from './components/PokemonProfile';
 
 let links = routes.map((e, i) => {
 	let linkEl = [];
@@ -24,6 +25,10 @@ function App() {
 					{routes.map(({ path, component, to }, i) => {
 						return <Route path={`/${path}`} key={i} element={component} />;
 					})}
+					<Route
+						path={'/pokedex/:id'}
+						element={<PokemonProfile></PokemonProfile>}
+					></Route>
 				</Routes>
 			</div>
 		</ThemeProvider>

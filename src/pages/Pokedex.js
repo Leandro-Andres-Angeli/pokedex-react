@@ -24,6 +24,7 @@ const Pokedex = () => {
 	let [query, setQuery] = useState('');
 	let [queryResults, setQueryResults] = useState([]);
 	let [searchResults, setSearchResults] = useState([]);
+	let [fade, setFade] = useState(true);
 	const [isLoaded, setisLoaded] = useState(false);
 	const [counter, setCounter] = useState(0);
 
@@ -54,7 +55,7 @@ const Pokedex = () => {
 			}
 		}
 	}, [search, query]);
-	console.log(searchResults);
+
 	return (
 		<>
 			<Container sx={{ backgroundColor: 'white', py: 3 }}>
@@ -63,6 +64,8 @@ const Pokedex = () => {
 					sx={{ fontSize: { md: '2rem' } }}
 				></PokedexHeader>
 				<PokedexSearchbar
+					setFade={setFade}
+					fade={fade}
 					setSearch={setSearch}
 					setQuery={setQuery}
 					search={search}
@@ -77,6 +80,7 @@ const Pokedex = () => {
 												key={i}
 												pokemon={p}
 												pokedexArray={pokemonArray}
+												fade={fade}
 											></PokeCard>
 										);
 								  })
@@ -95,6 +99,7 @@ const Pokedex = () => {
 										return (
 											<PokeCard
 												key={i}
+												fade={fade}
 												pokemon={p}
 												query={query}
 												search={search}
@@ -111,6 +116,8 @@ const Pokedex = () => {
 				{search === null ? (
 					<PokedexPagination
 						counter={counter}
+						fade={fade}
+						setFade={setFade}
 						setCounter={setCounter}
 					></PokedexPagination>
 				) : null}

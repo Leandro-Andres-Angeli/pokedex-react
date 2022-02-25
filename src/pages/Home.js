@@ -1,13 +1,8 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@mui/styles';
+import { useTheme } from '@mui/styles';
 import Container from '@mui/material/Container';
 import './home.css';
 import { Typography } from '@mui/material';
-// const style = makeStyles({
-// 	root: {
-// 		textDecoration: 'underline',
-// 	},
-// });
 
 const Home = () => {
 	const theme = useTheme();

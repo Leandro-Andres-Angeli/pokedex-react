@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import routes from './utils/routes';
 import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@mui/styles';
-import PokedexSearchbar from './components/PoxedexSearchbar';
+
 let links = routes.map((e, i) => {
 	let linkEl = [];
 	linkEl.push(e);

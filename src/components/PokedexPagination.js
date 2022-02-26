@@ -20,6 +20,12 @@ const PokedexPagination = (props) => {
 	return (
 		<Stack spacing={2} pt={5} pb={2}>
 			<Pagination
+				sx={{
+					'& .MuiButtonBase-root': {
+						fontSize: { xs: '12px', md: '1rem' },
+						padding: { xs: 0, md: '10px' },
+					},
+				}}
 				count={75}
 				showFirstButton
 				showLastButton

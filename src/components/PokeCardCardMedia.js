@@ -3,7 +3,7 @@ import React from 'react';
 
 const PokeCardCardMedia = (props) => {
 	const { mediaSource, height, profile } = props;
-	console.log(profile);
+
 	return (
 		<CardMedia
 			component="img"

@@ -3,10 +3,8 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const ProfileButtons = (props) => {
-	const location = useLocation();
-	console.log(location);
 	return (
 		<Stack spacing={2} direction="row" mt={5}>
 			<Link to={`/pokedex/${parseInt(props.id) - 1}`}>

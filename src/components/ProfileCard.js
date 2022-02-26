@@ -19,16 +19,6 @@ const ProfileCard = (props) => {
 	useEffect(() => {
 		FetchPokemon(`${process.env.REACT_APP_API_URL}/${id}`, setFetchRes);
 	}, [id]);
-	// if (fetchRes) {
-	// 	console.log(fetchRes?.abilities[0]?.ability?.name);
-	// 	fetchRes?.abilities?.map((e) => console.log(e.ability.name));
-	// }
-
-	// fetchRes.abilities?.map((e) => {
-	// 	console.log(e.ability[0].name);
-	// });
-	const theme = useTheme();
-	console.log(fetchRes.types);
 
 	return (
 		<Card

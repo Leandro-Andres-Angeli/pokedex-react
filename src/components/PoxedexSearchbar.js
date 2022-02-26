@@ -35,7 +35,9 @@ const PoxedexSearchbar = (props) => {
 					flexGrow: 1,
 				}}
 			>
-				<FormControl sx={{ flexDirection: 'row' }}>
+				<FormControl
+					sx={{ flexDirection: 'row', flexWrap: 'wrap', gap: { xs: 3 } }}
+				>
 					<TextField
 						id="outlined-basic"
 						label="Search by name or id"
@@ -83,6 +85,7 @@ const PoxedexSearchbar = (props) => {
 
 							scrollFunc(300, 714);
 						}}
+						sx={{ p: { xs: '10px 15px' } }}
 					>
 						back to pokedex
 					</Button>

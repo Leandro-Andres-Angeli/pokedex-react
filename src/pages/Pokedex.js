@@ -45,7 +45,6 @@ const Pokedex = () => {
 			};
 			fuseSearch(queryResults, options, setSearchResults, query);
 		} else if (validateNum(query)) {
-			console.log(query);
 			const filteredNumber = queryResults.filter(
 				(e) => e.url === `${process.env.REACT_APP_API_URL}/${query}/`
 			);

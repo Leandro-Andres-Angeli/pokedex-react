@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 
@@ -7,8 +7,8 @@ import routes from './utils/routes';
 import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@mui/styles';
 import PokemonProfile from './components/PokemonProfile';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { useState } from 'react';
+import Footer from './pages/Footer';
+
 let links = routes.map((e, i) => {
 	let linkEl = [];
 	linkEl.push(e);
@@ -33,6 +33,7 @@ function App() {
 						element={<PokemonProfile></PokemonProfile>}
 					></Route>
 				</Routes>
+				<Footer></Footer>
 			</div>
 		</ThemeProvider>
 	);

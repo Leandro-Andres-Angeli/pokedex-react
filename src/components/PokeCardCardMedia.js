@@ -2,7 +2,7 @@ import { CardMedia } from '@mui/material';
 import React from 'react';
 
 const PokeCardCardMedia = (props) => {
-	const { mediaSource, height, profile } = props;
+	const { mediaSource, profile } = props;
 
 	return (
 		<CardMedia

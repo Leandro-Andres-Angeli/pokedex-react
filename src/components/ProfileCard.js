@@ -6,7 +6,7 @@ import FetchPokemon from '../API/FetchPokemon';
 import PokeCardHeader from '../components/PokeCardHeader';
 import PokeCardCardMedia from './PokeCardCardMedia';
 import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
+
 import Stack from '@mui/material/Stack';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';

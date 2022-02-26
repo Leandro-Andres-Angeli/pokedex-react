@@ -25,7 +25,7 @@ const Pokedex = () => {
 	let [queryResults, setQueryResults] = useState([]);
 	let [searchResults, setSearchResults] = useState([]);
 	let [fade, setFade] = useState(true);
-	const [isLoaded, setisLoaded] = useState(false);
+
 	const [counter, setCounter] = useState(0);
 
 	useEffect(() => {

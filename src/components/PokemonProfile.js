@@ -1,23 +1,28 @@
-import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import ProfileButtons from './ProfileButtons';
 import { useState } from 'react';
 import FetchPokemon from '../API/FetchPokemon';
-import PokeCard from './PokeCard';
+
 import ProfileCard from './ProfileCard';
 const PokemonProfile = () => {
 	const params = useParams();
 	const { id } = params;
-	const [fetchRes, setFetchRes] = useState([]);
-	useEffect(() => {
-		FetchPokemon(`${process.env.REACT_APP_API_URL}/${id}`, setFetchRes);
-	}, []);
-	console.log(fetchRes);
+
 	return (
-		<Container maxWidth="lg">
-			<ProfileCard></ProfileCard>
-			<ProfileButtons></ProfileButtons>
+		<Container
+			maxWidth="lg"
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+				alignItems: 'center',
+				p: '3rem',
+			}}
+		>
+			<ProfileCard id={id}></ProfileCard>
+			<ProfileButtons id={id}></ProfileButtons>
 		</Container>
 	);
 };

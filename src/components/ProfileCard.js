@@ -21,7 +21,7 @@ const ProfileCard = (props) => {
 		FetchPokemon(`${process.env.REACT_APP_API_URL}/${id}`, setFetchRes);
 		window.scrollTo(0, 0);
 	}, [id]);
-	console.log(fetchRes);
+
 	return (
 		<Card
 			sx={{

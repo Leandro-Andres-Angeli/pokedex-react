@@ -19,7 +19,7 @@ const ProfileCard = (props) => {
 	useEffect(() => {
 		FetchPokemon(`${process.env.REACT_APP_API_URL}/${id}`, setFetchRes);
 	}, [id]);
-
+	console.log(fetchRes);
 	return (
 		<Card
 			sx={{

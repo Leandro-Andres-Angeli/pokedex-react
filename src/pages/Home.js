@@ -3,6 +3,7 @@ import { useTheme } from '@mui/styles';
 import Container from '@mui/material/Container';
 import './home.css';
 import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 	const theme = useTheme();
@@ -14,11 +15,13 @@ const Home = () => {
 			component="main"
 			sx={{ height: '91vh', display: 'flex' }}
 		>
-			<img
-				alt=""
-				src="./img/pokeball.svg"
-				style={{ marginBottom: '2rem' }}
-			></img>
+			<Link to="/pokedex">
+				<img
+					alt=""
+					src="./img/pokeball.svg"
+					style={{ marginBottom: '2rem' }}
+				></img>
+			</Link>
 			<Typography
 				variant="h2"
 				sx={{

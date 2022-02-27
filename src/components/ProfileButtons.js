@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Link } from 'react-router-dom';
+
 const ProfileButtons = (props) => {
 	return (
 		<Stack spacing={2} direction="row" mt={5}>

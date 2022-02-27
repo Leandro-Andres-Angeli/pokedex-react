@@ -12,12 +12,14 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import PokeCardChips from '../components/PokeCardChips';
+import { scrollFunc } from '../utils/scrollFunc';
 import './profile-stylesheet.css';
 const ProfileCard = (props) => {
 	const { id } = props;
 	const [fetchRes, setFetchRes] = useState([]);
 	useEffect(() => {
 		FetchPokemon(`${process.env.REACT_APP_API_URL}/${id}`, setFetchRes);
+		window.scrollTop();
 	}, [id]);
 	console.log(fetchRes);
 	return (

@@ -19,7 +19,7 @@ const ProfileCard = (props) => {
 	const [fetchRes, setFetchRes] = useState([]);
 	useEffect(() => {
 		FetchPokemon(`${process.env.REACT_APP_API_URL}/${id}`, setFetchRes);
-		window.scrollTop();
+		window.scrollTo(0, 0);
 	}, [id]);
 	console.log(fetchRes);
 	return (

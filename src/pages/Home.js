@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from '@mui/styles';
 import Container from '@mui/material/Container';
 import './home.css';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import scrollToTop from '../utils/pageScrollFunc';
 
 const Home = () => {
 	const theme = useTheme();
-
+	useEffect(() => {
+		scrollToTop();
+	});
 	return (
 		<Container
 			className="home_main"

@@ -16,6 +16,7 @@ import PokedexPagination from '../components/PokedexPagination';
 import { Typography } from '@mui/material';
 import { fuseSearch } from '../API/fusePokedex';
 import { validateNum, validateText } from '../utils/validation';
+import scrollToTop from '../utils/pageScrollFunc';
 const URI = process.env.REACT_APP_API_URL;
 
 const Pokedex = () => {
@@ -31,7 +32,9 @@ const Pokedex = () => {
 	useEffect(() => {
 		fetchData(`${URI}?limit=12&offset=${counter}`, setPokemonNameArray);
 	}, [counter]);
-
+	useEffect(() => {
+		scrollToTop();
+	});
 	useEffect(() => {
 		fetchData(`${URI}?limit=898&offset=0`, setQueryResults);
 

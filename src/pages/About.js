@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '@mui/material/Container';
 import { Typography, Box, Divider, List, ListItem } from '@mui/material';
+import scrollToTop from '../utils/pageScrollFunc';
 const About = () => {
+	useEffect(() => {
+		scrollToTop();
+	});
 	return (
 		<Container maxWidth="lg" sx={{ bgcolor: 'white' }}>
 			<Box px={10} py={15}>

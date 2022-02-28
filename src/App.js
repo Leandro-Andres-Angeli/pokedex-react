@@ -8,6 +8,8 @@ import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@mui/styles';
 import PokemonProfile from './components/PokemonProfile';
 import Footer from './pages/Footer';
+import { useEffect } from 'react';
+import scrollToTop from './utils/pageScrollFunc';
 
 let links = routes.map((e, i) => {
 	let linkEl = [];
